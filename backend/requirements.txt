@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+python-multipart
+openai
+groq
+langchain-groq
+langgraph
+chromadb
+sentence-transformers
+python-dotenv
