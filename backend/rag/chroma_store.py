@@ -1,13 +1,13 @@
 import chromadb
 
-client = chromadb.Client()
+client = chromadb.PersistentClient(path="./chroma_db")
 
 collection = client.get_or_create_collection(name="incidents")
 
-def add_incident(id, content):
+def add_incident(incident_id, content):
     collection.add(
         documents=[content],
-        ids=[id]
+        ids=[incident_id]
     )
 
 def search_similar(query):
@@ -40,5 +40,5 @@ for incident in sample_incidents:
             documents=[incident["content"]],
             ids=[incident["id"]]
         )
-    except:
-        pass
+    except Exception as e:
+        print(f"Error adding incident: {e}")
